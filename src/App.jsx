@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Board from './Components/Board';
 import './style.scss';
+import StatusMessage from './Components/StatusMessage';
 // here calculateWinner function is exported from winner.js file , so it is imported using {}
 import { calculateWinner } from './winner';
 
@@ -10,11 +11,6 @@ function App() {
 
   // here we didnt use a new state because , every time when the state is updated , the component will be re-rendered , and the isXNext  state variable will also be changed and it will be up-to-date and the next line will use the updated isXNext to find the next player
   const winner = calculateWinner(squares);
-  const nextPlayer = isXNext ? 'X' : 'O';
-
-  const statusMessage = winner
-    ? `Winner is ${winner}`
-    : `Next player is ${nextPlayer}`;
 
   const handleSquareClick = clickedPosition => {
     // the values on the squares may either be 'null' or 'X' or 'O' , null is like false and 'X' or 'O' is like true
@@ -36,7 +32,7 @@ function App() {
 
   return (
     <div className="app">
-      <h2>{statusMessage}</h2>
+      <StatusMessage winner={winner} isXNext={isXNext} squares={squares} />
       <Board squares={squares} handleSquareClick={handleSquareClick} />
     </div>
   );
