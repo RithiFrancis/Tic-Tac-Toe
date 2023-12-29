@@ -6,10 +6,10 @@ import History from './Components/History';
 // here calculateWinner function is exported from winner.js file , so it is imported using {}
 import { calculateWinner } from './winner';
 
+const NEW_GAME = [{ squares: Array(9).fill(null), isXNext: false }];
+
 function App() {
-  const [history, setHistory] = useState([
-    { squares: Array(9).fill(null), isXNext: false },
-  ]);
+  const [history, setHistory] = useState(NEW_GAME);
   const [currentMove, setCurrentMove] = useState(0);
 
   //derived/computd value(from history and currentMove) , this will give us the above object at line 10
