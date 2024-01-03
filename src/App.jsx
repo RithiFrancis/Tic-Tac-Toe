@@ -15,7 +15,7 @@ function App() {
   //derived/computd value(from history and currentMove) , this will give us the above object at line 10
   const gamingBoard = history[currentMove];
 
-  const winner = calculateWinner(gamingBoard.squares);
+  const { winner, winningSquares } = calculateWinner(gamingBoard.squares);
 
   const handleSquareClick = clickedPosition => {
     // the values on the squares may either be 'null' or 'X' or 'O' , null is like false and 'X' or 'O' is like true
@@ -68,6 +68,7 @@ function App() {
       <Board
         squares={gamingBoard.squares}
         handleSquareClick={handleSquareClick}
+        winningSquares = {winningSquares}
       />
 
       <button
